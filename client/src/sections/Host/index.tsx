@@ -146,7 +146,7 @@ export const Host = ({ viewer }: Props) => {
 				<FormItem
 					name="type"
 					label="Home Type"
-					rules={[{ required: true }]}
+					rules={[{ required: true, message: "Please select a home type!", }]}
 				>
 					<Radio.Group>
 						<Radio.Button value={ListingType.APARTMENT}>
