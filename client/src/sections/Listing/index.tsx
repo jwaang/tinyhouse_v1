@@ -5,6 +5,7 @@ import { Col, Layout, Row } from "antd";
 import { Moment } from "moment";
 import { ErrorBanner, PageSkeleton } from "../../lib/components";
 import { LISTING } from "../../lib/graphql/queries";
+import { useScrollToTop } from "../../lib/hooks";
 import {
 	Listing as ListingData,
 	ListingVariables,
@@ -47,6 +48,8 @@ export const Listing = ({
 			limit: PAGE_LIMIT,
 		},
 	});
+
+	useScrollToTop();
 
 	const clearBookingData = () => {
 		setModalVisible(false);

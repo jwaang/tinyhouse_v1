@@ -10,6 +10,7 @@ import { AuthUrl as AuthUrlData } from '../../lib/graphql/queries/AuthUrl/__gene
 import { LogIn as LogInData, LogInVariables } from '../../lib/graphql/mutations/LogIn/__generated__/LogIn';
 import { Viewer } from '../../lib/types';
 import googleLogo from './assets/google_logo.jpg';
+import { useScrollToTop } from '../../lib/hooks';
 
 interface Props {
     setViewer: (viewer: Viewer) => void;
@@ -33,6 +34,8 @@ export const Login = ({ setViewer }: Props) => {
         });
 
     const logInRef = useRef(logIn);
+
+    useScrollToTop();
 
     useEffect(() => {
         const code = new URL(window.location.href).searchParams.get('code');

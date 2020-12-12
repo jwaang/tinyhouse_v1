@@ -27,6 +27,7 @@ import {
 	HostListingVariables,
 } from "../../lib/graphql/mutations/HostListing/__generated__/HostListing";
 import { Viewer } from "../../lib/types";
+import { useScrollToTop } from "../../lib/hooks";
 import {
 	displayErrorMessage,
 	displaySuccessNotification,
@@ -61,6 +62,8 @@ export const Host = ({ viewer }: Props) => {
 			);
 		},
 	});
+
+	useScrollToTop();
 
 	const handleImageUpload = (info: UploadChangeParam) => {
 		const { file } = info;

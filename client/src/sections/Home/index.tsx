@@ -10,7 +10,7 @@ import {
 import { ListingsFilter } from "../../lib/graphql/globalTypes";
 import { displayErrorMessage } from "../../lib/utils";
 import { HomeHero, HomeListings, HomeListingsSkeleton } from "./components";
-
+import { useScrollToTop } from "../../lib/hooks";
 import mapBackground from "./assets/map-background.jpg";
 import sanFransiscoImage from "./assets/san-fransisco.jpg";
 import cancunImage from "./assets/cancun.jpg";
@@ -27,8 +27,11 @@ export const Home = ({ history }: RouteComponentProps) => {
       filter: ListingsFilter.PRICE_HIGH_TO_LOW,
       limit: PAGE_LIMIT,
       page: PAGE_NUMBER
-    }
+    },
+    fetchPolicy: "cache-and-network"
   });
+
+  useScrollToTop();
 
   const onSearch = (value: string) => {
     const trimmedValue = value.trim();

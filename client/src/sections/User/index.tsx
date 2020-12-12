@@ -10,6 +10,7 @@ import {
 } from "../../lib/graphql/queries/User/__generated__/User";
 import { Viewer } from "../../lib/types";
 import { PageSkeleton, ErrorBanner } from "../../lib/components";
+import { useScrollToTop } from "../../lib/hooks";
 
 interface Props {
 	viewer: Viewer;
@@ -40,8 +41,11 @@ export const User = ({
 				listingsPage,
 				limit: PAGE_LIMIT,
 			},
-		}
+			fetchPolicy: "cache-and-network"
+		},
 	);
+
+	useScrollToTop();
 
 	const handleUserRefetch = async () => {
 		await refetch();
